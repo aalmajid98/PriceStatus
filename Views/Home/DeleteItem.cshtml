@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Delete An Item";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="jumbotron">
+    <p class="lead">@Html.Raw(ViewBag.htmlOrig)</p>
+     
+    <form method="post" class="form-group maxItemForm">
+        <h3>Enter the ID number of the Item To Be Deleted</h3>
+        <input type="number" name="itemID" class="form-control inputBox" required/>
+        <input type="submit" value="Submit" class="btn btn-secondary" style="text-align: center"/>
+    </form>
+    <div class="messageContainer" style="text-align: center">
+        <p>@ViewBag.delete</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md">
+        <h2>See All Items</h2>
+        <p class="btn btn-default">@Html.ActionLink("All Items", "Index", "Home")</p>
+    </div>
+    
+    <div class="col-md">
+        <h2>Find Max Price of Item</h2>
+        <p class="btn btn-default">@Html.ActionLink("Item Max", "itemPrice", "Home")</p>
+    </div>
+
+    <div class="col-md">
+        <h2>Max Prices of Each Group</h2>
+        <p class="btn btn-default">@Html.ActionLink("Max Prices", "itemsPrice", "Home")</p>
+    </div>
+     
+    <div class="col-md">
+        <h2>Update or Add an Item</h2>
+        <p class="btn btn-default">@Html.ActionLink("Update/Add Item", "updateAddItem", "Home")</p>
+    </div>
+
+</div>

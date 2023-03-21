@@ -1,0 +1,93 @@
+﻿﻿@{
+    ViewBag.Title = "Add or Update an Item";
+ }
+ @model PriceStatus_Items.Models.AddUpdateItemModel
+<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script>
+    function test() {
+        console.log("test");
+    }
+    $(document).ready(function () {
+        $('#updateForm').hide();
+        $('#addForm').hide();
+        var updateDiv = false;
+        var addDiv = false;
+        
+        $('#update').click(function () {
+            updateDiv = !updateDiv;
+            if (updateDiv) {
+                $('#updateForm').show();
+                $('#addForm').hide();
+            } else {
+                $('#updateForm').hide();
+            }
+        });
+        $('#add').click(function () {
+            addDiv = !addDiv;
+            if (addDiv) {
+                $('#updateForm').hide();
+                $('#addForm').show();
+            } else {
+                $('#addForm').hide();
+            }
+        });
+        
+    });
+    
+</script>
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="jumbotron">
+    <p class="lead">@Html.Raw(ViewBag.htmlOrig)</p>
+
+    <div class="row" id="forms">
+        <div class="col-md-4" style="margin-left: 15%">
+            <h3 class="btn-outline-dark but" style="text-align:center" id="update" data-toggle="tooltip">Update Item</h3>
+            @using (Html.BeginForm("UpdateItem", "Home", FormMethod.Post, new {@class = "itemForm form-group", @id = "updateForm"}))
+            {
+                @Html.LabelFor(m => m.UpdateID, "ID Number");
+                @Html.TextBoxFor(m => m.UpdateID, new {@class = "inputBox form-control", @type = "number", @required = "required"});
+                @Html.LabelFor(m => m.UpdateName, "Item Name");
+                @Html.TextBoxFor(m => m.UpdateName, new {@class = "inputBox form-control", @type = "text", @required = "required"});
+                @Html.LabelFor(m => m.UpdateCost, "Item Cost");
+                @Html.TextBoxFor(m => m.UpdateCost, new {@class = "inputBox form-control", @type = "number", @required = "required"});
+                <input type="submit" vlaue="Update" class="btn btn-secondary submitButton"/>
+            }
+
+        </div>
+        <div class="col-md-4" >
+            <h3 class="btn-outline-dark but" style="text-align:center" id="add" data-toggle="tooltip">Add Item</h3>
+            @using (Html.BeginForm("AddItem", "Home", FormMethod.Post, new {@class = "itemForm form-group", @id = "addForm"}))
+            {
+                @Html.LabelFor(m => m.AddName, "Item Name");
+                @Html.TextBoxFor(m => m.AddName, new {@class = "inputBox form-control", placeholder = "Item Name", @type = "text", @required = "required"});
+                @Html.LabelFor(m => m.AddCost, "Item Cost");
+                @Html.TextBoxFor(m => m.AddCost, new {@class = "inputBox form-control", placeholder = "Item Cost", @type = "number", @required = "required"});
+                <input type="submit" value="Add" class="btn btn-secondary submitButton" />
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md">
+        <h2>See All Items</h2>
+        <p class="btn btn-default">@Html.ActionLink("All Items", "Index", "Home")</p>
+    </div>
+    
+    <div class="col-md">
+        <h2>Find Max Price of Item</h2>
+        <p class="btn btn-default">@Html.ActionLink("Item Max", "itemPrice", "Home")</p>
+    </div>
+    
+    <div class="col-md">
+        <h2>Max Prices of Each Group</h2>
+        <p class="btn btn-default">@Html.ActionLink("Max Prices", "itemsPrice", "Home")</p>
+    </div>
+    
+    <div class="col-md">
+        <h2>Delete An Item</h2>
+        <p class="btn btn-default">@Html.ActionLink("Delete Item", "DeleteItem", "Home")</p>
+    </div>
+    
+</div>

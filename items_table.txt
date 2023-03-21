@@ -1,0 +1,9 @@
+CREATE TABLE items
+{
+	ID		INT(11) AUTO_INCREMENT PRIMARY KEY,
+	ITEM_NAME	VARCHAR(255),
+	COST		INT
+}
+
+*Other commands used are inside the HomeController file in the Controller
+folder.

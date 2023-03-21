@@ -1,0 +1,32 @@
+﻿﻿@{
+    ViewBag.Title = "Max Prices";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+ <div class="jumbotron">
+     <h2>Items</h2>
+     <p class="lead">@Html.Raw(ViewBag.html)</p>
+ </div>
+
+ <div class="row">
+     <div class="col-md">
+         <h2>See All Items</h2>
+         <p class="btn btn-default">@Html.ActionLink("All Items", "Index", "Home")</p>
+     </div>
+     
+     <div class="col-md">
+         <h2>Find Max Price of Item</h2>
+         <p class="btn btn-default">@Html.ActionLink("Item Max", "itemPrice", "Home")</p>
+     </div>
+     <div class="col-md">
+         <h2>Update or Add an Item</h2>
+         <p class="btn btn-default">@Html.ActionLink("Update/Add Item", "updateAddItem", "Home")</p>
+     </div>
+     
+     <div class="col-md">
+         <h2>Delete An Item</h2>
+         <p class="btn btn-default">@Html.ActionLink("Delete Item", "DeleteItem", "Home")</p>
+     </div>
+     
+ </div>
